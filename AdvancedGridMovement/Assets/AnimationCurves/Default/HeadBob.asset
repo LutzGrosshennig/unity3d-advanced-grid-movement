@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8111cbc61d5a6b94e8e7d903a4e7e272, type: 3}
+  m_Name: HeadBob
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.058513626
+      outSlope: 0.058513626
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.28546166
+    - serializedVersion: 3
+      time: 0.23120625
+      value: 0.013016218
+      inSlope: 0.022607056
+      outSlope: 0.022607056
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.27090576
+      outWeight: 0.2686124
+    - serializedVersion: 3
+      time: 1.0027161
+      value: 0
+      inSlope: -0.038140647
+      outSlope: -0.038140647
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2671569
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4

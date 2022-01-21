@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 437759987}
   - component: {fileID: 437759988}
   - component: {fileID: 437759989}
+  - component: {fileID: 437759990}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -586,21 +587,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2.0630586
+      outSlope: 2.0630586
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.7033002
-      value: 0.83288777
-      inSlope: 1.4999995
-      outSlope: 1.4999995
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.07122732
     - serializedVersion: 3
       time: 1
       value: 1
@@ -626,14 +618,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.28546166
     - serializedVersion: 3
-      time: 0.21492004
-      value: 0.016080933
-      inSlope: 0.022607056
-      outSlope: 0.022607056
+      time: 0.19047943
+      value: 0.009009433
+      inSlope: 0.026928253
+      outSlope: 0.026928253
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.27090576
-      outWeight: 0.2686124
+      outWeight: 0.14271799
     - serializedVersion: 3
       time: 1.0027161
       value: 0
@@ -661,6 +653,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 437759990}
+        m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
+        m_MethodName: FlushQueue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &437759989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,9 +683,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
-          m_MethodName: MoveForward
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
+          m_MethodName: Forward
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -695,9 +699,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
-          m_MethodName: MoveBackward
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
+          m_MethodName: Backward
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -711,8 +715,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
           m_MethodName: StrafeLeft
           m_Mode: 1
           m_Arguments:
@@ -727,8 +731,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
           m_MethodName: StrafeRight
           m_Mode: 1
           m_Arguments:
@@ -743,8 +747,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
           m_MethodName: TurnLeft
           m_Mode: 1
           m_Arguments:
@@ -759,8 +763,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 437759988}
-          m_TargetAssemblyTypeName: AdvancedGridMovement, Assembly-CSharp
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
           m_MethodName: TurnRight
           m_Mode: 1
           m_Arguments:
@@ -771,6 +775,46 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &437759990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437759986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dafd587c46aa324ea88c9c8e5a9007a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QueueDepth: 5
+  EventIfTheCommandIsNotQueable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 5e4575ac851b8de46b09bc444baaafcc, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &546830363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2156,13 +2200,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407193487}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 437759987}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!108 &1407193489
 Light:
   m_ObjectHideFlags: 0

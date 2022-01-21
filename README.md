@@ -7,11 +7,11 @@ Some fellow gridders at www.dungeoncrawlers.org pointed out that the movement of
 So I started to write this more advanced script that will give you more control over the movement.
 
 # Whats new?
-Fully editable animation curve for the movement
-Fully editable animation curve for the head bob
-Command queueing. Plan your steps in advance!
-Full Unity3d project including sample level and some crappy collision detection code (just as simple showcase)
-The Wall texture is taken from https://github.com/LutzGrosshennig/amiga-xeno-dungeon-crawler (be gentle to it, its 30y old Amiga pixel art).
+ * Fully editable animation curve for the movement
+ * Fully editable animation curve for the head bob
+ * Command queueing. Plan your steps in advance!
+ * Full Unity3d project including sample level and some crappy collision detection code (just as simple showcase)
+ * The Wall texture is taken from https://github.com/LutzGrosshennig/amiga-xeno-dungeon-crawler (be gentle to it, its 30y old Amiga pixel art).
 
 # Usage
 

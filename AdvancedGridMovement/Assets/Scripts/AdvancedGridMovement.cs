@@ -1,19 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class AdvancedGridMovement : MonoBehaviour
 {
-    private const float LeftHand = -90.0f;
     private const float RightHand = +90.0f;
+    private const float LeftHand = -RightHand;
 
-    public float gridSize = 4.0f;
-    public float walkspeed = 1.0f;
-    public float turnSpeed = 5.0f;
+    [SerializeField] private float gridSize = 3.0f;
 
+    [Header("Movement speed settings")]
+    [SerializeField] private float walkspeed = 1.0f;
+    [SerializeField] private float turnSpeed = 5.0f;
+
+    [Header("Movement animation curve")]
+    [SerializeField] private AnimationCurve walkSpeedCurve;
+
+    [Header("Head bobbing animation curve")]
+    [SerializeField] private AnimationCurve headBobCurve;
+
+    [Header("Event when the path is blocked")]
+    [SerializeField] private UnityEvent blockedEvent;
+
+    // Animation target values.
     private Vector3 moveTowardsPosition;
     private Quaternion rotateFromDirection;
+
+    // Animation source values.
+    private Vector3 moveFromPosition;
     private Quaternion rotateTowardsDirection;
 
+    // Animation progress
     private float rotationTime = 0.0f;
+    private float curveTime = 0.0f;
 
     void Start()
     {
@@ -25,8 +43,7 @@ public class AdvancedGridMovement : MonoBehaviour
     {
         if (IsMoving())
         {
-            var step = Time.deltaTime * gridSize * walkspeed;
-            AnimateMovement(step);
+            AnimateMovement();
         }
 
         if (IsRotating())
@@ -39,13 +56,18 @@ public class AdvancedGridMovement : MonoBehaviour
     {
         rotationTime += Time.deltaTime;
         transform.rotation = Quaternion.Slerp(rotateFromDirection, rotateTowardsDirection, rotationTime * turnSpeed);
-      //  transform.rotation = Quaternion.RotateTowards(rotateFromDirection, rotateTowardsDirection, rotationTime * turnSpeed);
         CompensateRoundingErrors();
     }
 
-    private void AnimateMovement(float step)
+    private void AnimateMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, moveTowardsPosition, step);
+        curveTime += Time.deltaTime * walkspeed;
+        var currentPositionValue = walkSpeedCurve.Evaluate(curveTime);
+        var currentHeadBobValue = headBobCurve.Evaluate(curveTime * (gridSize / walkspeed));
+        var targetHeading = Vector3.Normalize(moveTowardsPosition - moveFromPosition);
+        var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
+        newPosition.y = currentHeadBobValue;
+        transform.position = newPosition;
         CompensateRoundingErrors();
     }
 
@@ -60,10 +82,14 @@ public class AdvancedGridMovement : MonoBehaviour
             transform.rotation = rotateTowardsDirection;
         }
 
-        if (transform.position == moveTowardsPosition)
+        var currentPosition = transform.position;
+        currentPosition.y = 0.0f;
+
+        if (currentPosition == moveTowardsPosition)
         {
             // To compensate rounding errors we explictly set the transform to our desired rotation.
             transform.position = moveTowardsPosition;
+            curveTime = 0.0f;
         }
 
     }
@@ -95,20 +121,25 @@ public class AdvancedGridMovement : MonoBehaviour
             Vector3 targetPosition = moveTowardsPosition + movementDirection;
             if (FreeSpace(targetPosition))
             {
+                moveFromPosition = transform.position;
                 moveTowardsPosition = targetPosition;
             }
             else
             {
+                blockedEvent?.Invoke();
             }
         }
     }
 
+    // should be refactored into an new class
     private bool FreeSpace(Vector3 targetPosition)
     {
+        // this is pretty lousy way to perform collision checks, its just just for demonstration purpose.
+        // Hint: layers are much faster then tags ;-)
         Vector3 delta = targetPosition - moveTowardsPosition;
         delta *= .6f;
         Collider[] intersectingColliders = Physics.OverlapBox(moveTowardsPosition + delta, new Vector3((gridSize / 2.0f) - .1f, 1.0f, (gridSize / 2.0f) - .1f), gameObject.transform.rotation);
-        Collider[] filteredColliders = System.Array.FindAll(intersectingColliders, collider => collider.CompareTag("Respawn") || collider.CompareTag("Level"));
+        Collider[] filteredColliders = System.Array.FindAll(intersectingColliders, collider => collider.CompareTag("Enemy") || collider.CompareTag("Level"));
         return filteredColliders.Length == 0;
     }
 
@@ -127,12 +158,12 @@ public class AdvancedGridMovement : MonoBehaviour
         if (!IsRotating())
         {
             rotateFromDirection = transform.rotation;
-            rotationTime = 0.0f;
             rotateTowardsDirection *= Quaternion.Euler(0.0f, eulerDirectionDelta, 0.0f);
+            rotationTime = 0.0f;
         }
     }
 
-    private bool IsStationary()
+    public bool IsStationary()
     {
         return !(IsMoving() || IsRotating());
     }

@@ -13,14 +13,18 @@ public class InputHandler : MonoBehaviour
 
     [SerializeField] private EventMapping[] eventMappings;
     [SerializeField] private EventMapping[] eventMappingsKeyDown;
+    [SerializeField] private EventMapping[] eventMappingsKeyUp;
 
     void Update()
     {
-        Action<EventMapping> action = new Action<EventMapping>(InputMapping);
-        Array.ForEach(eventMappings, action);
-
         Action<EventMapping> actionKeyDown = new Action<EventMapping>(InputMappingKeyDown);
         Array.ForEach(eventMappingsKeyDown, actionKeyDown);
+
+        Action<EventMapping> actionKeyUp = new Action<EventMapping>(InputMappingKeyUp);
+        Array.ForEach(eventMappingsKeyUp, actionKeyDown);
+
+        Action<EventMapping> action = new Action<EventMapping>(InputMapping);
+        Array.ForEach(eventMappings, action);
     }
 
     private static void InputMapping(EventMapping eventMapping)
@@ -34,6 +38,14 @@ public class InputHandler : MonoBehaviour
     private static void InputMappingKeyDown(EventMapping eventMapping)
     {
         if (Input.GetKeyDown(eventMapping.key))
+        {
+            eventMapping.callback.Invoke();
+        }
+    }
+
+    private static void InputMappingKeyUp(EventMapping eventMapping)
+    {
+        if (Input.GetKeyUp(eventMapping.key))
         {
             eventMapping.callback.Invoke();
         }

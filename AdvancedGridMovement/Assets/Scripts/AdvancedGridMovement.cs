@@ -15,6 +15,9 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Movement animation curve")]
     [SerializeField] private AnimationCurve walkSpeedCurve;
 
+    [Header("Running animation curve")]
+    [SerializeField] private AnimationCurve runningSpeedCurve;
+
     [Header("Head bobbing animation curve")]
     [SerializeField] private AnimationCurve headBobCurve;
 
@@ -33,10 +36,16 @@ public class AdvancedGridMovement : MonoBehaviour
     private float rotationTime = 0.0f;
     private float curveTime = 0.0f;
 
+    private AnimationCurve currentAnimationCurve;
+
+    private float currentWalkSpeed;
+
     void Start()
     {
         moveTowardsPosition = transform.position;
         rotateTowardsDirection = transform.rotation;
+        currentAnimationCurve = walkSpeedCurve;
+        currentWalkSpeed = walkspeed;
     }
 
     void Update()
@@ -52,6 +61,18 @@ public class AdvancedGridMovement : MonoBehaviour
         }
     }
 
+    public void SwitchToWalking()
+    {
+        currentAnimationCurve = walkSpeedCurve;
+        currentWalkSpeed = walkspeed;
+    }
+
+    public void SwitchToRunning()
+    {
+        currentAnimationCurve = walkSpeedCurve;
+        currentWalkSpeed = walkspeed * 1.5f;
+    }
+
     private void AnimateRotation()
     {
         rotationTime += Time.deltaTime;
@@ -61,9 +82,9 @@ public class AdvancedGridMovement : MonoBehaviour
 
     private void AnimateMovement()
     {
-        curveTime += Time.deltaTime * walkspeed;
-        var currentPositionValue = walkSpeedCurve.Evaluate(curveTime);
-        var currentHeadBobValue = headBobCurve.Evaluate(curveTime * (gridSize / walkspeed));
+        curveTime += Time.deltaTime * currentWalkSpeed;
+        var currentPositionValue = currentAnimationCurve.Evaluate(curveTime);
+        var currentHeadBobValue = headBobCurve.Evaluate(curveTime * (gridSize / currentWalkSpeed));
         var targetHeading = Vector3.Normalize(moveTowardsPosition - moveFromPosition);
         var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
         newPosition.y = currentHeadBobValue;

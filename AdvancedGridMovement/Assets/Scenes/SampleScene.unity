@@ -605,6 +605,30 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  runningSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   headBobCurve:
     serializedVersion: 2
     m_Curve:
@@ -618,14 +642,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.28546166
     - serializedVersion: 3
-      time: 0.22306456
-      value: 0.029773017
-      inSlope: 0.022607056
-      outSlope: 0.022607056
+      time: 0.1361856
+      value: 0.017266743
+      inSlope: 0.05103904
+      outSlope: 0.05103904
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.27090576
-      outWeight: 0.2686124
+      inWeight: 0.67638254
+      outWeight: 0.11802745
     - serializedVersion: 3
       time: 1.0027161
       value: 0
@@ -677,7 +701,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3783f92fc170b304388670df3032e52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventMappings: []
+  eventMappings:
+  - key: 119
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
+          m_MethodName: RunForward
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   eventMappingsKeyDown:
   - key: 119
     callback:
@@ -775,6 +815,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  eventMappingsKeyUp: []
 --- !u!114 &437759990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dafd587c46aa324ea88c9c8e5a9007a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueueDepth: 5
+  QueueDepth: 3
   EventIfTheCommandIsNotQueable:
     m_PersistentCalls:
       m_Calls:

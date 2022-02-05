@@ -13,6 +13,7 @@ public class MovementQueue : MonoBehaviour
 
     private Queue<Action> movementQueue;
     private AdvancedGridMovement advancedGridMovement;
+    private Action currentAction;
 
     void Start()
     {
@@ -31,9 +32,22 @@ public class MovementQueue : MonoBehaviour
         {
             if (movementQueue.Count > 0)
             {
-                var nextAction = movementQueue.Dequeue();
-                nextAction.Invoke();
+                currentAction = movementQueue.Dequeue();
+                currentAction.Invoke();
             }
+        }
+        else
+        {
+            if (movementQueue.Count > 0)
+            {
+                Action nextAction = movementQueue.Peek();
+                if (nextAction == currentAction)
+                {
+                    advancedGridMovement.SwitchToRunning();
+                    return;
+                }
+            }
+            advancedGridMovement.SwitchToWalking();
         }
     }
 
@@ -51,6 +65,7 @@ public class MovementQueue : MonoBehaviour
 
     public void FlushQueue()
     {
+        advancedGridMovement.SwitchToWalking();
         movementQueue.Clear();
     }
 
@@ -82,5 +97,13 @@ public class MovementQueue : MonoBehaviour
     public void TurnRight()
     {
         queueCommand(() => { advancedGridMovement.TurnRight(); });
+    }
+
+    public void RunForward()
+    {
+        if ((movementQueue.Count < QueueDepth) && (movementQueue.Count > 0))
+        {
+            movementQueue.Enqueue(() => { advancedGridMovement.MoveForward(); });
+        }
     }
 }

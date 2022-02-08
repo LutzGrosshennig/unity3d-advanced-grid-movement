@@ -11,9 +11,14 @@ public class MovementQueue : MonoBehaviour
     [Header("Event section")]
     [SerializeField] private UnityEvent EventIfTheCommandIsNotQueable;
 
+    [Header("Key press threshold to enable running")]
+    [SerializeField] private float keyPressThresholdTime = 0.5f;
+
     private Queue<Action> movementQueue;
     private AdvancedGridMovement advancedGridMovement;
     private Action currentAction;
+
+    private float forwardKeyPressedTime;
 
     void Start()
     {
@@ -24,6 +29,7 @@ public class MovementQueue : MonoBehaviour
 
         movementQueue = new Queue<Action>(QueueDepth);
         advancedGridMovement = GetComponent<AdvancedGridMovement>();
+        forwardKeyPressedTime = 0.0f;
     }
 
     void Update()
@@ -35,19 +41,6 @@ public class MovementQueue : MonoBehaviour
                 currentAction = movementQueue.Dequeue();
                 currentAction.Invoke();
             }
-        }
-        else
-        {
-            if (movementQueue.Count > 0)
-            {
-                Action nextAction = movementQueue.Peek();
-                if (nextAction == currentAction)
-                {
-                    advancedGridMovement.SwitchToRunning();
-                    return;
-                }
-            }
-            advancedGridMovement.SwitchToWalking();
         }
     }
 
@@ -101,9 +94,25 @@ public class MovementQueue : MonoBehaviour
 
     public void RunForward()
     {
-        if ((movementQueue.Count < QueueDepth) && (movementQueue.Count > 0))
+        forwardKeyPressedTime += Time.deltaTime;
+
+        if (forwardKeyPressedTime >= keyPressThresholdTime)
         {
-            movementQueue.Enqueue(() => { advancedGridMovement.MoveForward(); });
+            if ((movementQueue.Count < QueueDepth))
+            {
+                advancedGridMovement.SwitchToRunning();
+                movementQueue.Enqueue(() => { advancedGridMovement.MoveForward(); });
+            }
+        }
+    }
+
+    public void StopRunForward()
+    {
+        if (forwardKeyPressedTime >= keyPressThresholdTime)
+        {
+            forwardKeyPressedTime = 0.0f;
+            advancedGridMovement.SwitchToWalking();
+            FlushQueue();
         }
     }
 }

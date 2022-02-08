@@ -21,7 +21,7 @@ public class InputHandler : MonoBehaviour
         Array.ForEach(eventMappingsKeyDown, actionKeyDown);
 
         Action<EventMapping> actionKeyUp = new Action<EventMapping>(InputMappingKeyUp);
-        Array.ForEach(eventMappingsKeyUp, actionKeyDown);
+        Array.ForEach(eventMappingsKeyUp, actionKeyUp);
 
         Action<EventMapping> action = new Action<EventMapping>(InputMapping);
         Array.ForEach(eventMappings, action);

@@ -3,23 +3,29 @@ using UnityEngine.Events;
 
 public class AdvancedGridMovement : MonoBehaviour
 {
-    private const float RightHand = +90.0f;
+    private const float RightHand = 90.0f;
     private const float LeftHand = -RightHand;
 
     [SerializeField] private float gridSize = 3.0f;
 
-    [Header("Movement speed settings")]
-    [SerializeField] private float walkspeed = 1.0f;
+    [Header("Walk speed settings")]
+    [SerializeField] private float walkSpeed = 1.0f;
     [SerializeField] private float turnSpeed = 5.0f;
 
     [Header("Movement animation curve")]
     [SerializeField] private AnimationCurve walkSpeedCurve;
 
+    [Header("Walking head bob curve")]
+    [SerializeField] private AnimationCurve walkHeadBobCurve;
+
+    [Header("Run speed settings")]
+    [SerializeField] private float runningSpeed = 1.5f;
+
     [Header("Running animation curve")]
     [SerializeField] private AnimationCurve runningSpeedCurve;
 
-    [Header("Head bobbing animation curve")]
-    [SerializeField] private AnimationCurve headBobCurve;
+    [Header("Running head bob curve")]
+    [SerializeField] private AnimationCurve runningHeadBobCurve;
 
     [Header("Event when the path is blocked")]
     [SerializeField] private UnityEvent blockedEvent;
@@ -36,16 +42,18 @@ public class AdvancedGridMovement : MonoBehaviour
     private float rotationTime = 0.0f;
     private float curveTime = 0.0f;
 
+    //Current settings
     private AnimationCurve currentAnimationCurve;
-
-    private float currentWalkSpeed;
+    private AnimationCurve currentHeadBobCurve;
+    private float currentSpeed;
 
     void Start()
     {
         moveTowardsPosition = transform.position;
         rotateTowardsDirection = transform.rotation;
         currentAnimationCurve = walkSpeedCurve;
-        currentWalkSpeed = walkspeed;
+        currentHeadBobCurve = walkHeadBobCurve;
+        currentSpeed = walkSpeed;
     }
 
     void Update()
@@ -63,14 +71,16 @@ public class AdvancedGridMovement : MonoBehaviour
 
     public void SwitchToWalking()
     {
+        currentSpeed = walkSpeed;
         currentAnimationCurve = walkSpeedCurve;
-        currentWalkSpeed = walkspeed;
+        currentHeadBobCurve = walkHeadBobCurve;
     }
 
     public void SwitchToRunning()
     {
-        currentAnimationCurve = walkSpeedCurve;
-        currentWalkSpeed = walkspeed * 1.5f;
+        currentSpeed = runningSpeed;
+        currentAnimationCurve = runningSpeedCurve;
+        currentHeadBobCurve = runningHeadBobCurve;
     }
 
     private void AnimateRotation()
@@ -82,9 +92,9 @@ public class AdvancedGridMovement : MonoBehaviour
 
     private void AnimateMovement()
     {
-        curveTime += Time.deltaTime * currentWalkSpeed;
+        curveTime += Time.deltaTime * currentSpeed;
         var currentPositionValue = currentAnimationCurve.Evaluate(curveTime);
-        var currentHeadBobValue = headBobCurve.Evaluate(curveTime * (gridSize / currentWalkSpeed));
+        var currentHeadBobValue = currentHeadBobCurve.Evaluate(curveTime * gridSize);
         var targetHeading = Vector3.Normalize(moveTowardsPosition - moveFromPosition);
         var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
         newPosition.y = currentHeadBobValue;
@@ -103,6 +113,7 @@ public class AdvancedGridMovement : MonoBehaviour
             transform.rotation = rotateTowardsDirection;
         }
 
+        //mask out the head bobbing
         var currentPosition = transform.position;
         currentPosition.y = 0.0f;
 
@@ -155,7 +166,7 @@ public class AdvancedGridMovement : MonoBehaviour
     // should be refactored into an new class
     private bool FreeSpace(Vector3 targetPosition)
     {
-        // this is pretty lousy way to perform collision checks, its just just for demonstration purpose.
+        // this is pretty lousy way to perform collision checks, its just here for demonstration purposes.
         // Hint: layers are much faster then tags ;-)
         Vector3 delta = targetPosition - moveTowardsPosition;
         delta *= .6f;

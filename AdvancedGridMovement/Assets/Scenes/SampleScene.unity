@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 3
-  walkspeed: 1
+  walkSpeed: 1
   turnSpeed: 6
   walkSpeedCurve:
     serializedVersion: 2
@@ -605,6 +605,40 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  walkHeadBobCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: Infinity
+      outSlope: 0.0057177115
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.14674135
+    - serializedVersion: 3
+      time: 0.19026522
+      value: 0.020518234
+      inSlope: 0.0627317
+      outSlope: 0.0627317
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.51131165
+      outWeight: 0.27305883
+    - serializedVersion: 3
+      time: 1.0027161
+      value: 0
+      inSlope: -0.0000000470608
+      outSlope: -0.0000000470608
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.30423006
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  runningSpeed: 1.5
   runningSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -629,35 +663,35 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  headBobCurve:
+  runningHeadBobCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.058513626
-      outSlope: 0.058513626
-      tangentMode: 0
+      inSlope: Infinity
+      outSlope: 0.0057177115
+      tangentMode: 1
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.28546166
+      outWeight: 0.14674135
     - serializedVersion: 3
-      time: 0.1361856
-      value: 0.017266743
-      inSlope: 0.05103904
-      outSlope: 0.05103904
+      time: 0.36581933
+      value: 0.03584119
+      inSlope: -0.014442492
+      outSlope: -0.014442492
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.67638254
-      outWeight: 0.11802745
+      inWeight: 0.6425993
+      outWeight: 0.30623728
     - serializedVersion: 3
-      time: 1.0027161
+      time: 1
       value: 0
-      inSlope: -0.038140647
-      outSlope: -0.038140647
+      inSlope: -0.0000000470608
+      outSlope: -0.0000000470608
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2671569
+      inWeight: 0.30423006
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 1
@@ -815,7 +849,23 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  eventMappingsKeyUp: []
+  eventMappingsKeyUp:
+  - key: 119
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 437759990}
+          m_TargetAssemblyTypeName: MovementQueue, Assembly-CSharp
+          m_MethodName: StopRunForward
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &437759990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dafd587c46aa324ea88c9c8e5a9007a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueueDepth: 3
+  QueueDepth: 1
   EventIfTheCommandIsNotQueable:
     m_PersistentCalls:
       m_Calls:
@@ -856,6 +906,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  keyPressThresholdTime: 0.5
 --- !u!1001 &546830363
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -95,9 +95,23 @@ public class AdvancedGridMovement : MonoBehaviour
         curveTime += Time.deltaTime * currentSpeed;
         var currentPositionValue = currentAnimationCurve.Evaluate(curveTime);
         var currentHeadBobValue = currentHeadBobCurve.Evaluate(curveTime * gridSize);
-        var targetHeading = Vector3.Normalize(moveTowardsPosition - moveFromPosition);
+        var targetHeading = Vector3.Normalize(HeightInvariantVector(moveTowardsPosition) - HeightInvariantVector(moveFromPosition));
         var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
-        newPosition.y = currentHeadBobValue;
+        newPosition.y = 3.0f;
+        
+        RaycastHit hit;
+        Ray downRay = new Ray(newPosition, -Vector3.up);
+
+        // Cast a ray straight downwards.
+        if (Physics.Raycast(downRay, out hit))
+        {
+            newPosition.y = (3.0f - hit.distance) + currentHeadBobValue;
+        }
+        else
+        {
+            newPosition.y = currentHeadBobValue;
+        }
+
         transform.position = newPosition;
         CompensateRoundingErrors();
     }
@@ -114,13 +128,16 @@ public class AdvancedGridMovement : MonoBehaviour
         }
 
         //mask out the head bobbing
-        var currentPosition = transform.position;
-        currentPosition.y = 0.0f;
+        var currentPosition = HeightInvariantVector(transform.position);
+        var target = HeightInvariantVector(moveTowardsPosition);
 
-        if (currentPosition == moveTowardsPosition)
+        if (currentPosition == target)
         {
             // To compensate rounding errors we explictly set the transform to our desired rotation.
-            transform.position = moveTowardsPosition;
+            currentPosition = HeightInvariantVector(moveTowardsPosition);
+            currentPosition.y = transform.position.y;
+
+            transform.position = currentPosition;
             curveTime = 0.0f;
         }
 
@@ -202,12 +219,19 @@ public class AdvancedGridMovement : MonoBehaviour
 
     private bool IsMoving()
     {
-        return transform.position != moveTowardsPosition;
+        var current = HeightInvariantVector(transform.position);
+        var target = HeightInvariantVector(moveTowardsPosition);
+        return current != target;
     }
 
     private bool IsRotating()
     {
         return transform.rotation != rotateTowardsDirection;
+    }
+
+    private Vector3 HeightInvariantVector(Vector3 inVector)
+    {
+        return new Vector3(inVector.x, 0.0f, inVector.z);
     }
 
     private Vector3 CalculateForwardPosition()

@@ -27,6 +27,10 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Running head bob curve")]
     [SerializeField] private AnimationCurve runningHeadBobCurve;
 
+    [Header("Step height")]
+    [SerializeField] private float maximumStepHeight = 2.0f;
+
+
     [Header("Event when the path is blocked")]
     [SerializeField] private UnityEvent blockedEvent;
 
@@ -97,7 +101,7 @@ public class AdvancedGridMovement : MonoBehaviour
         var currentHeadBobValue = currentHeadBobCurve.Evaluate(curveTime * gridSize);
         var targetHeading = Vector3.Normalize(HeightInvariantVector(moveTowardsPosition) - HeightInvariantVector(moveFromPosition));
         var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
-        newPosition.y = 3.0f;
+        newPosition.y = maximumStepHeight;
         
         RaycastHit hit;
         Ray downRay = new Ray(newPosition, -Vector3.up);
@@ -105,7 +109,7 @@ public class AdvancedGridMovement : MonoBehaviour
         // Cast a ray straight downwards.
         if (Physics.Raycast(downRay, out hit))
         {
-            newPosition.y = (3.0f - hit.distance) + currentHeadBobValue;
+            newPosition.y = (maximumStepHeight - hit.distance) + currentHeadBobValue;
         }
         else
         {

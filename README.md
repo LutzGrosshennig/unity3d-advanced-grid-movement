@@ -10,7 +10,7 @@ So I started to write this more advanced script that will give you more control 
  * Fully editable animation curve for the movement
  * Fully editable animation curve for the head bob
  * Command queueing. Plan your steps in advance!
- * Run/dash mode. Hold and press 'W' to advance even faster (woth separate headbob/movement curves)
+ * Run/dash mode. Hold and press 'W' to advance even faster (with separate headbob/movement curves)
  * Height system. You can now climp stairs and slopes. This enables a new dimension (literally) for level design!
  * A basic event based footstep system and an generated example "footstep" sample you need to replace really soon ;-)
  * Full Unity3d project including sample level and some crappy collision detection code (just as simple showcase)

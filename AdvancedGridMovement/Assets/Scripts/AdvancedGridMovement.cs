@@ -33,9 +33,11 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Event when the path is blocked")]
     [SerializeField] private UnityEvent blockedEvent;
 
-    [Header("Event when the player makes a step forward")]
+    [Header("Event when the player takes a step")]
     [SerializeField] private UnityEvent stepEvent;
 
+    [Header("Event when the player turns around")]
+    [SerializeField] private UnityEvent turnEvent;
 
     private float stepdelay = 0.2f;
     private float stepTimeCounter = 0.0f;
@@ -52,6 +54,9 @@ public class AdvancedGridMovement : MonoBehaviour
     private float rotationTime = 0.0f;
     private float curveTime = 0.0f;
 
+    private float stepTimeCounter = 0.0f;
+    private float stepTime = 0.0f;
+
     //Current settings
     private AnimationCurve currentAnimationCurve;
     private AnimationCurve currentHeadBobCurve;
@@ -64,8 +69,7 @@ public class AdvancedGridMovement : MonoBehaviour
         currentAnimationCurve = walkSpeedCurve;
         currentHeadBobCurve = walkHeadBobCurve;
         currentSpeed = walkSpeed;
-
-        stepdelay = 1.0f / (gridSize);
+        stepTime = 1.0f / gridSize;
     }
 
     void Update()
@@ -107,8 +111,7 @@ public class AdvancedGridMovement : MonoBehaviour
         curveTime += Time.deltaTime * currentSpeed;
 
         stepTimeCounter += Time.deltaTime * currentSpeed;
-
-        if(stepTimeCounter > stepdelay)
+        if (stepTimeCounter > stepTime)
         {
             stepTimeCounter = 0.0f;
             stepEvent?.Invoke();
@@ -217,11 +220,13 @@ public class AdvancedGridMovement : MonoBehaviour
 
     public void TurnRight()
     {
+        turnEvent?.Invoke();
         TurnEulerDegrees(RightHand);
     }
 
     public void TurnLeft()
     {
+        turnEvent?.Invoke();
         TurnEulerDegrees(LeftHand);
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MovementQueue : MonoBehaviour
 {
     [Header("Queue settings")]
-    [SerializeField] private int QueueDepth = 5;
+    [SerializeField] [Range(1,5)] private int QueueDepth = 1;
 
     [Header("Event section")]
     [SerializeField] private UnityEvent EventIfTheCommandIsNotQueable;
@@ -14,22 +14,16 @@ public class MovementQueue : MonoBehaviour
     [Header("Key press threshold to enable running")]
     [SerializeField] private float keyPressThresholdTime = 0.5f;
 
-    private Queue<Action> movementQueue;
     private AdvancedGridMovement advancedGridMovement;
+    private Queue<Action> movementQueue;
     private Action currentAction;
-
     private float forwardKeyPressedTime;
 
     void Start()
     {
-        if (QueueDepth < 1)
-        {
-            QueueDepth = 1;
-        }
-
         movementQueue = new Queue<Action>(QueueDepth);
         advancedGridMovement = GetComponent<AdvancedGridMovement>();
-        forwardKeyPressedTime = 0.0f;
+        ResetKeyPressTimer();
     }
 
     void Update()
@@ -58,8 +52,14 @@ public class MovementQueue : MonoBehaviour
 
     public void FlushQueue()
     {
-        advancedGridMovement.SwitchToWalking();
+        ResetKeyPressTimer();
         movementQueue.Clear();
+        advancedGridMovement.SwitchToWalking();
+    }
+
+    private void ResetKeyPressTimer()
+    {
+        forwardKeyPressedTime = 0.0f;
     }
 
     public void Forward()
@@ -110,8 +110,6 @@ public class MovementQueue : MonoBehaviour
     {
         if (forwardKeyPressedTime >= keyPressThresholdTime)
         {
-            forwardKeyPressedTime = 0.0f;
-            advancedGridMovement.SwitchToWalking();
             FlushQueue();
         }
     }

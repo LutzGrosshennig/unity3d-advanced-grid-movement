@@ -30,9 +30,14 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Step height")]
     [SerializeField] private float maximumStepHeight = 2.0f;
 
-
     [Header("Event when the path is blocked")]
     [SerializeField] private UnityEvent blockedEvent;
+
+    [Header("Event when the player takes a step")]
+    [SerializeField] private UnityEvent stepEvent;
+
+    [Header("Event when the player turns around")]
+    [SerializeField] private UnityEvent turnEvent;
 
     // Animation target values.
     private Vector3 moveTowardsPosition;
@@ -46,6 +51,9 @@ public class AdvancedGridMovement : MonoBehaviour
     private float rotationTime = 0.0f;
     private float curveTime = 0.0f;
 
+    private float stepTimeCounter = 0.0f;
+    private float stepTime = 0.0f;
+
     //Current settings
     private AnimationCurve currentAnimationCurve;
     private AnimationCurve currentHeadBobCurve;
@@ -58,6 +66,7 @@ public class AdvancedGridMovement : MonoBehaviour
         currentAnimationCurve = walkSpeedCurve;
         currentHeadBobCurve = walkHeadBobCurve;
         currentSpeed = walkSpeed;
+        stepTime = 1.0f / gridSize;
     }
 
     void Update()
@@ -97,6 +106,14 @@ public class AdvancedGridMovement : MonoBehaviour
     private void AnimateMovement()
     {
         curveTime += Time.deltaTime * currentSpeed;
+
+        stepTimeCounter += Time.deltaTime * currentSpeed;
+        if (stepTimeCounter > stepTime)
+        {
+            stepTimeCounter = 0.0f;
+            stepEvent?.Invoke();
+        }
+
         var currentPositionValue = currentAnimationCurve.Evaluate(curveTime);
         var currentHeadBobValue = currentHeadBobCurve.Evaluate(curveTime * gridSize);
         var targetHeading = Vector3.Normalize(HeightInvariantVector(moveTowardsPosition) - HeightInvariantVector(moveFromPosition));
@@ -143,6 +160,7 @@ public class AdvancedGridMovement : MonoBehaviour
 
             transform.position = currentPosition;
             curveTime = 0.0f;
+            stepTimeCounter = 0.0f;
         }
 
     }
@@ -198,11 +216,13 @@ public class AdvancedGridMovement : MonoBehaviour
 
     public void TurnRight()
     {
+        turnEvent?.Invoke();
         TurnEulerDegrees(RightHand);
     }
 
     public void TurnLeft()
     {
+        turnEvent?.Invoke();
         TurnEulerDegrees(LeftHand);
     }
 

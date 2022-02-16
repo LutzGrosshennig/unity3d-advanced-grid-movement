@@ -39,6 +39,9 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Event when the player turns around")]
     [SerializeField] private UnityEvent turnEvent;
 
+    private float stepdelay = 0.2f;
+    private float stepTimeCounter = 0.0f;
+
     // Animation target values.
     private Vector3 moveTowardsPosition;
     private Quaternion rotateFromDirection;
@@ -116,6 +119,7 @@ public class AdvancedGridMovement : MonoBehaviour
 
         var currentPositionValue = currentAnimationCurve.Evaluate(curveTime);
         var currentHeadBobValue = currentHeadBobCurve.Evaluate(curveTime * gridSize);
+       
         var targetHeading = Vector3.Normalize(HeightInvariantVector(moveTowardsPosition) - HeightInvariantVector(moveFromPosition));
         var newPosition = moveFromPosition + (targetHeading * (currentPositionValue * gridSize));
         newPosition.y = maximumStepHeight;

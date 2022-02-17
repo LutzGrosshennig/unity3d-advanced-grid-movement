@@ -28,6 +28,8 @@ public class FootstepSystem : MonoBehaviour
 
     public void Turn()
     {
+        leftFoot.pitch = Random.Range(0.7f, 1f);
+        rightFoot.pitch = Random.Range(0.7f, 1f);
         leftFoot.PlayOneShot(turnClip, Random.Range(0.1f, 0.3f));
         rightFoot.PlayOneShot(turnClip, Random.Range(0.1f, 0.3f));
     }

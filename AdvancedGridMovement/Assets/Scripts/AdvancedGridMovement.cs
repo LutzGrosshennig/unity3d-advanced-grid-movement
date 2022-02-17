@@ -39,9 +39,6 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Event when the player turns around")]
     [SerializeField] private UnityEvent turnEvent;
 
-    private float stepdelay = 0.2f;
-    private float stepTimeCounter = 0.0f;
-
     // Animation target values.
     private Vector3 moveTowardsPosition;
     private Quaternion rotateFromDirection;
@@ -54,8 +51,8 @@ public class AdvancedGridMovement : MonoBehaviour
     private float rotationTime = 0.0f;
     private float curveTime = 0.0f;
 
-    private float stepTimeCounter = 0.0f;
     private float stepTime = 0.0f;
+    private float stepTimeCounter = 0.0f;
 
     //Current settings
     private AnimationCurve currentAnimationCurve;

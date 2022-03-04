@@ -7,11 +7,6 @@ In the past I wrote the https://github.com/LutzGrosshennig/unity3d-AnimatedGridM
 Some fellow gridders at www.dungeoncrawlers.org pointed out that the movement of that script is way to linear and yes they are right about it.
 So I started to write this more advanced script that will give you more control over the movement.
 
-# Screenshots
-
-![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshot/Screenshot_1.jpg)
-![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshot/Screenshot_2.jpg)
-
 # Whats new?
  * Fully editable animation curve for the movement
  * Fully editable animation curve for the head bob

@@ -9,8 +9,8 @@ So I started to write this more advanced script that will give you more control 
 
 # Screenshots
 
-![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshot/Screenshot_1.jpg)
-![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshot/Screenshot_2.jpg)
+![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/Screenshot_1.jpg)
+![Screenshot](https://https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/Screenshot_2.jpg)
 
 # Whats new?
  * Fully editable animation curve for the movement

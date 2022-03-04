@@ -20,6 +20,7 @@ So I started to write this more advanced script that will give you more control 
  * Height system. You can now climp stairs and slopes. This enables a new dimension (literally) for level design!
  * A basic event based footstep system and an generated example "footstep" sample you need to replace really soon ;-)
  * Full Unity3d project including sample level and some crappy collision detection code (just as simple showcase)
+ * Oblique frustum, a common problem of 3d dungeon crawlers is that you can't see enought of the tile you are standing on, this is caused by the default symetrical view frustrum, using an asymetrical view frustrum adresses the issue. This is done by shifting the camera lens down in the physical camera emulation.
 
 # Materials used
 
@@ -29,13 +30,11 @@ So I started to write this more advanced script that will give you more control 
 # Usage
 
 Should be pretty self explainatory. If you have questions create an issue and I will answer and update this readme.
-
 In depth documentation is work in progress. 
 
 # Whats next?
 
-The code could use an refactoring. There are some dependcies and responsiblities I am not happy with. However "done!" is always better than "It will only release it when its perfect!"
-Of course I will use the script in "Xenomorph 2409" as well.
+The code could use refactoring. There are some dependcies and responsiblities I am not happy with. However "done!" is always better than "It will only release it when its perfect!". Of course I will use the scripts in "Xenomorph 2409" as well.
 
 # Challenge
 

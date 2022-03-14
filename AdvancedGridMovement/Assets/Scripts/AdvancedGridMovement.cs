@@ -5,6 +5,7 @@ public class AdvancedGridMovement : MonoBehaviour
 {
     private const float RightHand = 90.0f;
     private const float LeftHand = -RightHand;
+    private const float approximationThreshold = 0.025f;
 
     [SerializeField] private float gridSize = 3.0f;
 
@@ -84,6 +85,14 @@ public class AdvancedGridMovement : MonoBehaviour
 
     public void SwitchToWalking()
     {
+        var currentPosition = currentAnimationCurve.Evaluate(curveTime);
+        var newPosition = walkSpeedCurve.Evaluate(curveTime);
+
+        if (newPosition < currentPosition)
+        {
+            curveTime = FindTimeForValue(currentPosition, walkSpeedCurve);
+        }
+
         currentSpeed = walkSpeed;
         currentAnimationCurve = walkSpeedCurve;
         currentHeadBobCurve = walkHeadBobCurve;
@@ -91,9 +100,28 @@ public class AdvancedGridMovement : MonoBehaviour
 
     public void SwitchToRunning()
     {
+        var currentPosition = currentAnimationCurve.Evaluate(curveTime);
+        var newPosition = runningSpeedCurve.Evaluate(curveTime);
+
+        if (newPosition < currentPosition)
+        {
+            curveTime = FindTimeForValue(currentPosition, runningSpeedCurve);
+        }
+
         currentSpeed = runningSpeed;
         currentAnimationCurve = runningSpeedCurve;
         currentHeadBobCurve = runningHeadBobCurve;
+    }
+
+    private float FindTimeForValue(float position, AnimationCurve curve)
+    {
+        float result = 1.0f;
+
+        while ((position < curve.Evaluate(result)) && (result > 0.0f))
+        {
+            result -= approximationThreshold;
+        }
+        return result;
     }
 
     private void AnimateRotation()
@@ -108,6 +136,7 @@ public class AdvancedGridMovement : MonoBehaviour
         curveTime += Time.deltaTime * currentSpeed;
 
         stepTimeCounter += Time.deltaTime * currentSpeed;
+
         if (stepTimeCounter > stepTime)
         {
             stepTimeCounter = 0.0f;

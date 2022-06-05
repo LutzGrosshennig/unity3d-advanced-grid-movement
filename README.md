@@ -13,14 +13,13 @@ So I started to write this more advanced script that will give you more control 
 ![Screenshot](https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/Screenshot_2.jpg)
 
 # Whats new?
- * Fully editable animation curve for the movement
- * Fully editable animation curve for the head bob
+ * Fully editable animation curve for the movement and head bob
  * Command queueing. Plan your steps in advance!
- * Run/dash mode. Hold and press 'W' to advance even faster (with separate headbob/movement curves)
+ * Run/dash mode (experimental). Hold and press 'W' to advance even faster (with separate headbob/movement curves).
  * Height system. You can now climp stairs and slopes. This enables a new dimension (literally) for level design!
  * A basic event based footstep system and an generated example "footstep" sample you need to replace really soon ;-)
- * Full Unity3d project including sample level and some crappy collision detection code (just as simple showcase)
- * Oblique frustum, a common problem of 3d dungeon crawlers is that you can't see enought of the tile you are standing on, this is caused by the default symetrical view frustrum, using an asymetrical view frustrum adresses the issue. This is done by shifting the camera lens down in the physical camera emulation.
+ * Full Unity3d project including a prebuild sample level and some crappy 3d collision detection code (just to showcase)
+ * Oblique viewing frustum. A common problem of new 3d dungeon crawlers is, that you can't see enought of the tile you are currently standing on, this is caused by the default symetrical view frustrum on most 3d engines, switching to an asymetrical view frustrum adresses the issue. This is done by shifting the camera lens down in the physical camera emulation.
 
 # Materials used
 
@@ -29,12 +28,16 @@ So I started to write this more advanced script that will give you more control 
 
 # Usage
 
+There is a prebuild test level to walk around. Since this level is prebuild there is no 2d map to back it up but it gives you full control of your 3d world. Of course you can also generate the 3d level based on a 2d level map and then use the 2d map to apply your game logic, or you derive a 2d map based on what you build in 3d the choice is yours, both paths have there pro's and con's.
+
+I'll update the documentation step by step but if you have a specific question, just open an issue and I'm happy to help.
+
 Should be pretty self explainatory. If you have questions create an issue and I will answer and update this readme.
 In depth documentation is work in progress. 
 
 # Whats next?
 
-The code could use refactoring. There are some dependcies and responsiblities I am not happy with. However "done!" is always better than "It will only release it when its perfect!". Of course I will use the scripts in "Xenomorph 2409" as well.
+The code could definiatly use some refactorings. There are some dependcies and responsiblities I'm not happy with. However "done!" is always better than "I will only release it when its perfect!". Of course I will use the scripts in "Xenomorph 2409" as well.
 
 # Challenge
 

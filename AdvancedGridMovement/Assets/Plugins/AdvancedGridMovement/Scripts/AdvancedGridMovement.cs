@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/* Copyright 2021-2022 Lutz Großhennig
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
+
+using UnityEngine;
 using UnityEngine.Events;
 
 public class AdvancedGridMovement : MonoBehaviour
@@ -9,11 +17,12 @@ public class AdvancedGridMovement : MonoBehaviour
 
     [SerializeField] private float gridSize = 3.0f;
 
+
     [Header("Walk speed settings")]
     [SerializeField] private float walkSpeed = 1.0f;
     [SerializeField] private float turnSpeed = 5.0f;
 
-    [Header("Movement animation curve")]
+    [Header("Walking animation curve")]
     [SerializeField] private AnimationCurve walkSpeedCurve;
 
     [Header("Walking head bob curve")]
@@ -28,7 +37,7 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Running head bob curve")]
     [SerializeField] private AnimationCurve runningHeadBobCurve;
 
-    [Header("Step height")]
+    [Header("Maximum step height")]
     [SerializeField] private float maximumStepHeight = 2.0f;
 
     [Header("Event when the path is blocked")]
@@ -37,7 +46,7 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Event when the player takes a step")]
     [SerializeField] private UnityEvent stepEvent;
 
-    [Header("Event when the player turns around")]
+    [Header("Event when the player is turning")]
     [SerializeField] private UnityEvent turnEvent;
 
     // Animation target values.
@@ -121,6 +130,7 @@ public class AdvancedGridMovement : MonoBehaviour
         {
             result -= approximationThreshold;
         }
+
         return result;
     }
 
@@ -170,8 +180,8 @@ public class AdvancedGridMovement : MonoBehaviour
     private void CompensateRoundingErrors()
     {
         // Bear in mind that floating point numbers are inaccurate by design. 
-        // The == operator performs a fuzy compare which means that we are only approximatly near the target rotation.
-        // We may not entirely reached the rotateTowardsViewAngle or we may have slightly overshot it already (both within the margin of error).
+        // The == operator performs a fuzy compare which means that we are only approximatly near the target value.
+        // We may not entirely reached the value yet or we may have slightly overshot it already (both within the margin of error).
         if (transform.rotation == rotateTowardsDirection)
         {
             // To compensate rounding errors we explictly set the transform to our desired rotation.

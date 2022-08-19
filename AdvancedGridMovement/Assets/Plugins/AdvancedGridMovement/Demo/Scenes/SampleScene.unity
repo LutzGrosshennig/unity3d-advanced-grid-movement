@@ -1317,20 +1317,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.41261172
+      outSlope: 0.41261172
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.102888085
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.054159872
+      outSlope: 0.054159872
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.17418772
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1349,13 +1349,13 @@ MonoBehaviour:
       outWeight: 0.14674135
     - serializedVersion: 3
       time: 0.27443272
-      value: 0.020289352
-      inSlope: 0.0627317
-      outSlope: 0.0627317
+      value: 0.019587448
+      inSlope: 0.053942025
+      outSlope: 0.053942025
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.51131165
-      outWeight: 0.27305883
+      inWeight: 0.41631895
+      outWeight: 0.18303806
     - serializedVersion: 3
       time: 1.0027161
       value: 0
@@ -1406,8 +1406,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.14674135
     - serializedVersion: 3
-      time: 0.54721206
-      value: 0.036078364
+      time: 0.4714064
+      value: 0.031363398
       inSlope: 0.027701227
       outSlope: 0.027701227
       tangentMode: 0
@@ -2004,14 +2004,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530672143}
-  m_LocalRotation: {x: -0, y: -0, z: 0.23030452, w: 0.97311866}
-  m_LocalPosition: {x: -10.041, y: 0.438, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 3}
+  m_LocalRotation: {x: 0, y: 0, z: 0.08715578, w: 0.9961947}
+  m_LocalPosition: {x: -9.97, y: 0.47, z: 0}
+  m_LocalScale: {x: 5, y: 0.09, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 382176049}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26.63}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10}
 --- !u!65 &530672145
 BoxCollider:
   m_ObjectHideFlags: 0

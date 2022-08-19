@@ -1,3 +1,10 @@
+/* Copyright 2021-2022 Lutz Groﬂhennig
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +12,14 @@ using UnityEngine.Events;
 
 public class MovementQueue : MonoBehaviour
 {
-    [Header("Queue settings")]
+    [Header("Queue depth setting")]
     [SerializeField] [Range(1,5)] private int QueueDepth = 1;
 
-    [Header("Event section")]
+    [Header("Event if the command can not be queued")]
     [SerializeField] private UnityEvent EventIfTheCommandIsNotQueable;
 
-    [Header("Key press threshold to enable running")]
-    [SerializeField] private float keyPressThresholdTime = 0.5f;
+    [Header("Key press delay to switch into running mode")]
+    [SerializeField] private float keyPressThresholdTime = 1.0f;
 
     private AdvancedGridMovement advancedGridMovement;
     private Queue<Action> movementQueue;

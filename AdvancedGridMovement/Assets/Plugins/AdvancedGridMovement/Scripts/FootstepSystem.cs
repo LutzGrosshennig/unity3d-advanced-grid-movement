@@ -1,3 +1,10 @@
+/* Copyright 2021-2022 Lutz Groﬂhennig
+
+Use of this source code is governed by an MIT-style
+license that can be found in the LICENSE file or at
+https://opensource.org/licenses/MIT.
+*/
+
 using UnityEngine;
 
 public class FootstepSystem : MonoBehaviour
@@ -14,16 +21,12 @@ public class FootstepSystem : MonoBehaviour
     [Range(0.1f, 1.0f)]
     [SerializeField] private float rightMinimumPitch = 0.5f;
 
-    [Header("turn around settings")]
+    [Header("Turn around settings")]
     [SerializeField] private AudioClip turnClip;
     [Range(0.1f, 1.0f)]
     [SerializeField] private float turnMinimumPitch = 0.5f;
 
-
-
     private bool nextStepLeft = false;
-
-
 
     public void Step()
     {

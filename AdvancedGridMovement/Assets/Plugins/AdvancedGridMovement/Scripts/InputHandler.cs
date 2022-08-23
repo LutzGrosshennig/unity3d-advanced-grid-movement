@@ -9,6 +9,10 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
+ * This script adds a simple input handler for the old input system, that allows you to map key presses to events.
+ */
+
 public class InputHandler : MonoBehaviour
 {
     [System.Serializable]

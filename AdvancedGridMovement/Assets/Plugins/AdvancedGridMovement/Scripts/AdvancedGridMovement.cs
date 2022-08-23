@@ -9,6 +9,11 @@ https://opensource.org/licenses/MIT.
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
+ * This script adds animated grid based movement similar to Dungeon Master, Eye of the Beholder & Legend of Grimrock.
+ * It overs advanced options like control over the movement and headbob. 
+ */
+
 public class AdvancedGridMovement : MonoBehaviour
 {
     private const float RightHand = 90.0f;

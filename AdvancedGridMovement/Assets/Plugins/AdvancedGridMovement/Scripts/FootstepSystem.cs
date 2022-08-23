@@ -7,6 +7,9 @@ https://opensource.org/licenses/MIT.
 
 using UnityEngine;
 
+/*
+ * This script adds a simple footstep system to an player object.
+ */
 public class FootstepSystem : MonoBehaviour
 {
     [Header("Left foot settings")]

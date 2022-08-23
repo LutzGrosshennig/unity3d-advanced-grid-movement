@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
+ * This script lets you queue up movement commands in advance and replays them.
+ */
+
 public class MovementQueue : MonoBehaviour
 {
     [Header("Queue depth setting")]

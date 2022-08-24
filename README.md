@@ -62,7 +62,7 @@ This script handels queuing of commands and has a dependcy towards the AdvancedG
 
 This is a simple system that can be used to add a footstep system to the player. Just assign two AudioSources for the left and right foot and assign some Audioclips that are played when the method Step() is called. The scipt handles left and right steps automatically so you just need to call Step() or Turn() to initiate the playback of the assigned AudioClips.
 
-![FootstepSystemOptions](https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/FootSystem.png)
+![FootstepSystemOptions](https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/FootstepSystem.png)
 
 # Whats next?
 

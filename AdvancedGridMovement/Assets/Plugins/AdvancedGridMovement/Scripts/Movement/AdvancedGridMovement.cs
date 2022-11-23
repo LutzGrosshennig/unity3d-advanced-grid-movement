@@ -250,6 +250,7 @@ public class AdvancedGridMovement : MonoBehaviour
     // should be refactored into an new class
     private bool FreeSpace(Vector3 targetPosition)
     {
+        return true;
         // this is pretty lousy way to perform collision checks, its just here for demonstration purposes.
         // Hint: layers are much faster then tags ;-)
         Vector3 delta = targetPosition - moveTowardsPosition;

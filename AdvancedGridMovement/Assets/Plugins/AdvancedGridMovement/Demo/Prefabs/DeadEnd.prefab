@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumIntensity: 7.5
-  maximumIntensity: 20
-  flickerDuration: 0.5
+  maximumIntensity: 15
+  flickerDuration: 0.75
 --- !u!1 &8201875943164300128
 GameObject:
   m_ObjectHideFlags: 0

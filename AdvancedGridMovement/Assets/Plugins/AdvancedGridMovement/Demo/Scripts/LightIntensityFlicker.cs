@@ -14,12 +14,13 @@ public class LightIntensityFlicker : MonoBehaviour
     [SerializeField] float maximumIntensity = 2.5f;
     [SerializeField] float flickerDuration  = 0.35f;
 
-    private Light lightSource;
-    private float elapsedTime;
+    Light lightSource;
 
-    private float timeScale;
-    private float lastIntensity;
-    private float targetIntensity;
+    float elapsedTime;
+
+    float timeScale;
+    float lastIntensity;
+    float targetIntensity;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class LightIntensityFlicker : MonoBehaviour
             lastIntensity = targetIntensity;
             targetIntensity = Random.Range(minimumIntensity, maximumIntensity);
             ResetElapsedTime();
-            lightSource.intensity = targetIntensity;
+            lightSource.intensity = lastIntensity;
         }
         else
         {

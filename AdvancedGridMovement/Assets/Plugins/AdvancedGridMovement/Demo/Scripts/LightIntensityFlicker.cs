@@ -48,6 +48,7 @@ public class LightIntensityFlicker : MonoBehaviour
         {
             lightSource.intensity = Mathf.Lerp(lastIntensity, targetIntensity, elapsedTime * timeScale);
         }
+
     }
 
     private void ResetElapsedTime()

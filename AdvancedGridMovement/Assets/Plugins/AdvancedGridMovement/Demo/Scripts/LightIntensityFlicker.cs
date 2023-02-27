@@ -10,9 +10,9 @@ using UnityEngine;
 public class LightIntensityFlicker : MonoBehaviour
 {
     [Header("Light intensity settings")]
-    [SerializeField] float minimumIntensity = 0.5f;
-    [SerializeField] float maximumIntensity = 2.5f;
-    [SerializeField] float flickerDuration  = 0.35f;
+    [SerializeField] float minimumIntensity = 0.75f;
+    [SerializeField] float maximumIntensity = 1.5f;
+    [SerializeField] float flickerDuration  = 0.25f;
 
     private Light lightSource;
     private float elapsedTime;

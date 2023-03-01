@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.24117647, g: 0.11372549, b: 0.08039216, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1404,6 +1404,24 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.102888085
     - serializedVersion: 3
+      time: 0.1536577
+      value: 0.057219032
+      inSlope: 0.8226607
+      outSlope: 0.8226607
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.687531
+      value: 0.8326563
+      inSlope: 1.386467
+      outSlope: 1.386467
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0.054159872
@@ -1428,8 +1446,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.14674135
     - serializedVersion: 3
-      time: 0.27443272
-      value: 0.019587448
+      time: 0.16040379
+      value: 0.020533493
       inSlope: 0.053942025
       outSlope: 0.053942025
       tangentMode: 0
@@ -1455,20 +1473,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
+      inSlope: 1.1025753
+      outSlope: 1.1025753
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8796491
+      value: 0.9698793
+      inSlope: 0.9308442
+      outSlope: 0.9308442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4349221
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0.25027376
+      outSlope: 0.25027376
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1486,8 +1513,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.14674135
     - serializedVersion: 3
-      time: 0.4714064
-      value: 0.031363398
+      time: 0.298134
+      value: 0.027352352
       inSlope: 0.027701227
       outSlope: 0.027701227
       tangentMode: 0
@@ -1719,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dafd587c46aa324ea88c9c8e5a9007a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QueueDepth: 1
+  QueueDepth: 2
   EventIfTheCommandIsNotQueable:
     m_PersistentCalls:
       m_Calls:
@@ -1747,7 +1774,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  keyPressThresholdTime: 1.5
+  keyPressThresholdTime: 2
 --- !u!114 &437759991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5614,7 +5641,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.74147415, b: 0, a: 1}
+  m_Color: {r: 0.8962264, g: 0.7925122, b: 0.37765506, a: 1}
   m_Intensity: 1
   m_Range: 15
   m_SpotAngle: 90
@@ -5677,8 +5704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b765c7ee46247b4faa11eb324e4c264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumIntensity: 0.8
-  maximumIntensity: 1.15
+  minimumIntensity: 2
+  maximumIntensity: 3
   flickerDuration: 0.25
 --- !u!114 &1407193491
 MonoBehaviour:
@@ -5692,7 +5719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40840a95466d3fe45a19e3eea9f74486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: {x: 1, y: 1, z: 1}
+  Amount: {x: 2, y: 2, z: 2}
   Duration: 5
   Speed: 0.4
   Curve:
@@ -7885,7 +7912,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960113904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1.2, z: 0}
+  m_LocalPosition: {x: -0.75, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

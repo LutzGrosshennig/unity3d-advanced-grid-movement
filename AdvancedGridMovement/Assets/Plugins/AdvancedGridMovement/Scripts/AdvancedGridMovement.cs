@@ -20,9 +20,10 @@ public class AdvancedGridMovement : MonoBehaviour
     private const float LeftHand = -RightHand;
     private const float approximationThreshold = 0.025f;
 
+    [Header("Grid size setting")]
     [SerializeField] private float gridSize = 3.0f;
 
-
+    [Space(10)]
     [Header("Walk speed settings")]
     [SerializeField] private float walkSpeed = 1.0f;
     [SerializeField] private float turnSpeed = 5.0f;
@@ -33,6 +34,7 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Walking head bob curve")]
     [SerializeField] private AnimationCurve walkHeadBobCurve;
 
+    [Space(10)]
     [Header("Run speed settings")]
     [SerializeField] private float runningSpeed = 1.5f;
 
@@ -42,9 +44,11 @@ public class AdvancedGridMovement : MonoBehaviour
     [Header("Running head bob curve")]
     [SerializeField] private AnimationCurve runningHeadBobCurve;
 
+    [Space(10)]
     [Header("Maximum step height")]
     [SerializeField] private float maximumStepHeight = 2.0f;
 
+    [Space(10)]
     [Header("Event when the path is blocked")]
     [SerializeField] private UnityEvent blockedEvent;
 

@@ -1404,17 +1404,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.102888085
     - serializedVersion: 3
-      time: 0.1536577
-      value: 0.057219032
-      inSlope: 0.8226607
-      outSlope: 0.8226607
+      time: 0.13741222
+      value: 0.06193601
+      inSlope: 0.4646838
+      outSlope: 0.4646838
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.23747289
     - serializedVersion: 3
-      time: 0.687531
-      value: 0.8326563
+      time: 0.7091916
+      value: 0.8350148
       inSlope: 1.386467
       outSlope: 1.386467
       tangentMode: 0
@@ -1446,14 +1446,32 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.14674135
     - serializedVersion: 3
-      time: 0.16040379
-      value: 0.020533493
-      inSlope: 0.053942025
-      outSlope: 0.053942025
+      time: 0.18755595
+      value: 0.00096804043
+      inSlope: 0.082535
+      outSlope: 0.082535
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.41631895
-      outWeight: 0.18303806
+      outWeight: 0.122953996
+    - serializedVersion: 3
+      time: 0.47776803
+      value: 0.014454853
+      inSlope: 0.0013860263
+      outSlope: 0.0013860263
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.89682764
+      value: -0.0037244153
+      inSlope: -0.028006274
+      outSlope: -0.028006274
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1.0027161
       value: 0
@@ -1473,29 +1491,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.1025753
-      outSlope: 1.1025753
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.8796491
-      value: 0.9698793
-      inSlope: 0.9308442
-      outSlope: 0.9308442
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.4349221
-    - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0.25027376
-      outSlope: 0.25027376
-      tangentMode: 34
+      inSlope: 0.26665434
+      outSlope: 0.26665434
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.044223845
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1507,28 +1516,46 @@ MonoBehaviour:
       time: 0
       value: 0
       inSlope: Infinity
-      outSlope: 0.0057177115
+      outSlope: -0.020470018
       tangentMode: 1
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.14674135
+      outWeight: 0.7148
     - serializedVersion: 3
-      time: 0.298134
-      value: 0.027352352
-      inSlope: 0.027701227
-      outSlope: 0.027701227
+      time: 0.16224682
+      value: -0.0025779756
+      inSlope: 0.05542754
+      outSlope: 0.05542754
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5147338
+      value: 0.024757665
+      inSlope: -0.0025508425
+      outSlope: -0.0025508425
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.6425993
-      outWeight: 0.3405974
+      outWeight: 0.39367473
+    - serializedVersion: 3
+      time: 0.8083277
+      value: -0.003335433
+      inSlope: -0.061884806
+      outSlope: -0.061884806
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.0000000470608
-      outSlope: -0.0000000470608
+      inSlope: 0.05881508
+      outSlope: 0.05881508
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.30423006
+      inWeight: 0.68276143
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 1
@@ -1774,7 +1801,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  keyPressThresholdTime: 2
+  keyPressThresholdTime: 1.5
 --- !u!114 &437759991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4129,8 +4156,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.254717, g: 0.19565924, b: 0.107333556, a: 0}
   m_projectionMatrixMode: 2
   m_GateFitMode: 3
   m_FOVAxisMode: 0

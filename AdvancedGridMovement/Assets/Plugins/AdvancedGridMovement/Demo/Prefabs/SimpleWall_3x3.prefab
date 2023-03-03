@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5228809456856966096}
   m_Layer: 0
   m_Name: SimpleWall_3x3
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

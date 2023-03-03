@@ -91,6 +91,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8890888123738555208}
     m_Modifications:
+    - target: {fileID: 1941210896321034575, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1941210896321034575, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266642346405018179, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266642346405018179, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283786494428743438, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283786494428743438, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8440572398189367700, guid: fe4c5996803b5894689b54e5bab2a050, type: 3}
       propertyPath: m_Name
       value: New_OneWall

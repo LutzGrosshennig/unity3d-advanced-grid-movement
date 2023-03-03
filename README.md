@@ -1,6 +1,6 @@
 # Advanced grid based movement for dungeon crawler type games.
 
-An more advanced approach for Dungeon Master, Eye of the Beholder, Legend of Grimrock style grid based movement in Unity3d games.
+An more advanced approach for Dungeon Master, Eye of the Beholder, Legend of Grimrock style grid based movement in Unity3d games. Supporting both WASD-QE style movement and using the Numpad (8, 2, 4, 6 and 7, 9)
 
 In the past I wrote the https://github.com/LutzGrosshennig/unity3d-AnimatedGridMovement-Camera script which I used for my 'Xenomorph 2409' game project. back then.
 
@@ -23,6 +23,7 @@ So I started to write this more advanced script that will give you a lot more co
  * Improved torch light. I added some Perlin noise based animation to the torch to make it look more realistic and added some sound to it.
  * Switched over the linear colorspace.
  * Made the level objects static to improve performance quiet a lot. (This is just a example none the less).
+ * Added Numpad support for thoose who prefer this (Numpad 8, 4, 6, 2 and 7, 9).
 
 # Materials used
 

@@ -4,7 +4,7 @@ An more advanced approach for Dungeon Master, Eye of the Beholder, Legend of Gri
 
 In the past I wrote the https://github.com/LutzGrosshennig/unity3d-AnimatedGridMovement-Camera script which I used for my 'Xenomorph 2409' game project. back then.
 
-Some fellow gridders at www.dungeoncrawlers.org pointed out that the movement of that script is way to linear and they are right about it.
+Some fellow gridders pointed out that the movement of that script is way to linear and they are right about it.
 So I started to write this more advanced script that will give you a lot more control over the player movement.
 
 # Screenshots

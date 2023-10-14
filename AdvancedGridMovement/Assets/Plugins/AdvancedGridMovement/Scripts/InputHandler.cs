@@ -10,7 +10,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /*
- * This script adds a simple input handler for the old input system, that allows you to map key presses to events.
+ * This script adds a simple input handler for the old input system, that allows you to map key presses to events rather then using GetKeyXYZ() all over the place.
+ * However I advice to use the new Unity Inputsystem which does something similar out-of-the-box, it is sadly not the default input system at the time of writing.
  */
 
 public class InputHandler : MonoBehaviour

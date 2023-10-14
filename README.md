@@ -1,6 +1,6 @@
 # Advanced grid based movement for dungeon crawler type games.
 
-An more advanced approach for Dungeon Master, Eye of the Beholder, Legend of Grimrock style grid based movement in Unity3d games.
+An more advanced approach for Dungeon Master, Eye of the Beholder, Legend of Grimrock style grid based movement in Unity3d games. Supporting both WASD-QE style movement and using the Numpad (8, 2, 4, 6 and 7, 9)
 
 In the past I wrote the https://github.com/LutzGrosshennig/unity3d-AnimatedGridMovement-Camera script which I used for my 'Xenomorph 2409' game project. back then.
 
@@ -20,11 +20,20 @@ So I started to write this more advanced script that will give you a lot more co
  * A basic event based footstep system and an generated example "footstep" sample you need to replace really soon ;-)
  * Full Unity3d project including a prebuild sample level and some crappy 3d collision detection code (just to showcase)
  * Oblique viewing frustum. A common problem of new 3d dungeon crawlers is, that you can't see enought of the tile you are currently standing on, this is caused by the default symetrical view frustrum on most 3d engines, switching to an asymetrical view frustrum adresses the issue. This is done by shifting the camera lens down in the physical camera emulation of Unity3d.
+ * Improved torch light. I added some Perlin noise based animation to the torch to make it look more realistic and added some sound to it.
+ * Switched over the linear colorspace.
+ * Made the level objects static to improve performance quiet a lot. (This is just a example none the less).
+ * Added Numpad support for thoose who prefer this (Numpad 8, 4, 6, 2 and 7, 9).
 
 # Materials used
 
  * The materials and textures in the FreePBR folder are taken from www.freepbr.com
  * The simple wall texture is taken from https://github.com/LutzGrosshennig/amiga-xeno-dungeon-crawler (be gentle to it, its 30y old Amiga pixel 'art').
+
+# SFX used
+
+* The "Footstep" was done in SFXR by myself. You should replace this with something better.
+* bonfire-hq-6991.mp3 Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6991">Pixabay</a>
 
 # Usage
 
@@ -42,7 +51,7 @@ You will find four scripts that do everything you need to get going.
 
 ### AdvancedGridMovement.cs
 
-This is the main script that handels the actuall movement and the animation of the movement. It also contains some very basic collision detection that I want to move out of the responsibilites of the script at some point in time. The collision detection code is very crude and I advice against the usage inside of production code as it uses tags to find gameobjects which can get rather slow pretty quickly in large scenes.
+This is the main script that handels the actual movement and the animation of the movement. It also contains some very basic collision detection that I want to move out of the responsibilites of the script at some point in time. The collision detection code is very crude and I advice against the usage inside of production code as it uses tags to find gameobjects which can get rather slow pretty quickly in large scenes.
 
 ![AdvancedOptions](https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/AdvancedGridMovement.png)
 

@@ -5,7 +5,7 @@ public class TorchAnimator : MonoBehaviour
     /// <summary>
     /// Amount of the variation
     /// </summary>
-    public Vector3 Amount = new Vector3(1f, 1f, 0);
+    public Vector3 Amount = new(1f, 1f, 0);
 
     /// <summary>
     /// Duration of variation
@@ -34,10 +34,12 @@ public class TorchAnimator : MonoBehaviour
             {
                 var curveValue = Curve.Evaluate(1f - time / Duration);
 
+                var timeSpeed = time * Speed;
+
                 //next position based on perlin noise
-                var nextPos = (Mathf.PerlinNoise(time * Speed, time * Speed * 2) - 0.5f) * Amount.x * transform.right * curveValue +
-                              (Mathf.PerlinNoise(time * Speed * 2, time * Speed) - 0.5f) * Amount.y * transform.up * curveValue +
-                              (Mathf.PerlinNoise(time * Speed, time * Speed * 3) - 0.5f) * Amount.z * transform.forward * curveValue;
+                var nextPos = (Mathf.PerlinNoise(timeSpeed, timeSpeed * 2) - 0.5f) * Amount.x * curveValue * transform.right +
+                              (Mathf.PerlinNoise(timeSpeed * 2, timeSpeed) - 0.5f) * Amount.y * curveValue * transform.up +
+                              (Mathf.PerlinNoise(timeSpeed, timeSpeed * 3) - 0.5f) * Amount.z * curveValue * transform.forward;
 
                 transform.localPosition = nextPos;
             }

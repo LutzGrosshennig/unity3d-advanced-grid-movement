@@ -7,6 +7,13 @@ In the past I wrote the https://github.com/LutzGrosshennig/unity3d-AnimatedGridM
 Some fellow gridders pointed out that the movement of that script is way to linear and they are right about it.
 So I started to write this more advanced script that will give you a lot more control over the player movement.
 
+# Who used it?
+
+This project was used in the production of the following games.
+
+ * The Shattered Sigil of Harmony https://lutzgrosshennig.itch.io/the-shattered-sigil-of-harmony
+ * Twins vs. Ancients https://lutzgrosshennig.itch.io/twins-vs-ancients
+
 # Screenshots
 
 ![Screenshot](https://github.com/LutzGrosshennig/unity3d-advanced-grid-movement/blob/main/Screenshots/Screenshot_1.jpg)

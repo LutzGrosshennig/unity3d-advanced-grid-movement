@@ -10,9 +10,9 @@ using UnityEngine;
 public class LightIntensityFlicker : MonoBehaviour
 {
     [Header("Light intensity settings")]
-    [SerializeField] float minimumIntensity = 0.75f;
-    [SerializeField] float maximumIntensity = 1.5f;
-    [SerializeField] float flickerDuration  = 0.25f;
+    [SerializeField] private float minimumIntensity = 0.75f;
+    [SerializeField] private float maximumIntensity = 1.5f;
+    [SerializeField] private float flickerDuration  = 0.25f;
 
     private Light lightSource;
     private float elapsedTime;
@@ -24,8 +24,8 @@ public class LightIntensityFlicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lightSource = GetComponent<Light>();
         ResetElapsedTime();
+        lightSource = GetComponent<Light>();
         timeScale = 1.0f / flickerDuration;
         lastIntensity = minimumIntensity;
         targetIntensity = maximumIntensity;
@@ -41,7 +41,7 @@ public class LightIntensityFlicker : MonoBehaviour
             lastIntensity = targetIntensity;
             targetIntensity = Random.Range(minimumIntensity, maximumIntensity);
             ResetElapsedTime();
-            lightSource.intensity = targetIntensity;
+            lightSource.intensity = lastIntensity;
         }
         else
         {
